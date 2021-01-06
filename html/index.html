@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BLM 489</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+  </head>
+
+<body>
+    <!-- NAVBAR  -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Hoş Geldiniz!</a>
+  
+    </nav>
+    <p></p>
+    
+    <div class="container">
+        
+        <div class="jumbotron" id="topjumbo">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        <div id="chartContainer" style="height: 270px; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </th>
+                    <th>
+                        <div id="chartContainer2" style="height: 270px; width: 100%;"></div>
+                    </th>
+                    
+                </tr>
+            </table>
+            
+        </div><!-- /.jumbotron -->
+        <div id="app">
+        <button type="submit" v-on:click="grafikgoster"
+                class="btn btn-primary">Grafik Goster</button>
+        <p></p>
+        <div class="jumbotron">
+          <h1 class="display-6" v-if="this.olayList[0]">{{this.olayList[0].baslik}}</h1>
+          <p class="lead"> Julius Caesar'ın öfkesiyle yapılan savaşta Gnaeus Pompeius Magnus (Pompey), Roma Senatosu'na bölgedeki bir orduyu 
+                çekerken Yunanistan'a kaçmasını emretti. Pompey'in acil tehdidi ortadan kalktığında, Caesar Cumhuriyet'in batı 
+                bölgelerindeki konumunu hızla pekiştirdi.</p>
+
+                <p class="lead">      İspanya'daki Pompey güçlerini yenerek, doğuya yöneldi ve Yunanistan'da bir kampanya için hazırlık yapmaya başladı.
+                Bu çabalar, Pompey'in güçlerinin Cumhuriyet donanmasını kontrol etmesi nedeniyle engelleniyordu. Sonunda o kışı 
+                geçmeye zorlayan Sezar, yakında Mark Antony yönetimindeki yeni birlikler tarafından birleştirildi.</p>
+
+                <p class="lead">Güçlendirilmiş olmasına rağmen, Caesar hâlâ Pompey'in ordusu tarafından sayıca daha fazlaydı, ancak adamları 
+                gazileri ve düşman büyük ölçüde yeni askerlerdi. Yaz boyunca, iki ordu birbirine karşı hareket etti, Sezar, 
+                Dyrrhachium'da Pompey'i kuşatma girişiminde bulundu. Ortaya çıkan savaş Pompey'in bir zafer kazanmasını gördü ve 
+                Sezar geri çekilmeye zorlandı. Caesar'la savaşmaktan çekinmeyen Pompey, bu zaferi takip etmeyi başaramadı ve 
+                rakibinin ordusunu boyun eğmeye mecbur kılmayı tercih etti. Bu kursta, generalleri, çeşitli senatörler ve ona 
+                savaşmayı dileyen diğer etkili Romalılar tarafından kısa bir süre sonra sallandı.</p>
+
+                <p class="lead">Tesalya'dan ilerleyen Pompey ordusunu, Enipeus Vadisi'ndeki Dogantz Dağı'nın eteklerinde, Sezar'ın ortasından yaklaşık 
+                üç buçuk mil uzağa yerleştirdi.</p>
+
+                <p class="lead">Birkaç gün boyunca ordular her sabah savaş için kuruldu, ancak Caesar dağın yamaçlarına saldırmak istemiyordu. 
+                8 Ağustos'a kadar, gıda malzemeleri düşükken, Sezar doğuyu geri çekmeyi tartışmaya başladı. Savaşmak için baskı 
+                altında olan Pompey, ertesi sabah savaş vermeyi planladı.</p>
+
+                <p class="lead">Vadiye doğru ilerleyen Pompey, Enipeus Nehri üzerindeki sağ kanadına demirledi ve adamlarını her on erkekte üç 
+                sıradan oluşan geleneksel bir formasyona yerleştirdi.</p>
+
+                <p class="lead">Daha büyük ve daha iyi eğitimli bir süvari kuvvetine sahip olduğunu bilerek, atını sola doğru yoğunlaştırdı. Onun planı 
+                piyanonun yerinde kalması için çağrıda bulundu ve Sezar'ın erkeklerini uzun bir mesafeden suçlamaya ve temastan 
+                önce onları yormaya zorladı. Piyade meşgulken, süvarileri Caesar'ın tarladan fırlatılmasını ve düşmanın yanına ve 
+                arkasına saldırmasını sağladı.</p>
+
+                <p class="lead">Pompey'in 9 Ağustos'ta dağdan ayrıldığını gören Caesar, tehdidi karşılamak için küçük ordusunu konuşlandırdı. Mark 
+                Antony'nin nehrin kıyısındaki önderliğindeki solunu bağlarken, Pompey'in kadar derin olmasa da üç çizgi oluşturdu. 
+                Ayrıca üçüncü sırasını yedekte tuttu. Pompey'nin süvarilerdeki üstünlüğünü anlatan Sezar, üçüncü sırasından 3.000 
+                kişiyi çıkardı ve orduyu korumak için süvarilerinin ardında çapraz bir çizgi halinde dizdi. Masrafı sipariş etmek, 
+                Sezar'ın adamları ilerlemeye başladı. İleriye dönük olarak, Pompey'in ordusunun kendi ayakları üzerinde durduğu çok 
+                geçmeden ortaya çıktı.</p>
+
+                <p class="lead">Pompey'nin hedefini fark eden Sezar, düşmanlarını istila etmek ve reform yapmak için ordusunu yaklaşık 150 metre 
+                uzakta durdurdu. Avanslarını sürdürürken, Pompey'in çizgilerine çarptılar. Yan tarafta, Titus Labienus Pompey'in 
+                süvarilerini ileriye götürdü ve meslektaşlarına karşı ilerleme kaydetti.</p>
+
+                <p class="lead">Geriye dönerken, Caesar'ın süvarileri Labienus'un atlılarını piyade destekleme hattına yönlendirdi. Düşman 
+                süvarilerine itmek için onların ciritlerini kullanarak, Caesar'ın adamları saldırıyı durdurdu. Kendi süvarileriyle
+                birleşerek, Labienus askerlerini tarladan aldılar ve sürdüler.</p>
+
+                <p class="lead">Sola dönerek, bu kombine kuvvetler piyade ve süvari Pompey'in sol tarafına çarptı. Caesar'ın ilk iki hattı Pompey'in
+                büyük ordusundan ağır baskı altında olmasına rağmen, bu saldırı, rezerv hattının girişi ile birleştiğinde, savaşı salladı.
+                Göğüs uçları ve önlerine saldıran taze askerler ile Pompey'in adamları yol vermeye başladılar. Ordusu çökerken, 
+                Pompey tarladan kaçtı. Savaşın kararını vermeyi amaçlayan Sezar, Pompey'in geri çekilme ordusunu izledi ve ertesi gün 
+                teslim olmak için dört lejyona mecbur kaldı.</p>
+    
+        </div><!-- /.jumbotron -->
+    
+    
+        <div class="jumbotron">
+          
+        <h1 class="display-6" style="font-size:34px">Soru1</h1>
+        <p class="lead" style="font-size:24px">Sizce hangi taraf haklıdır?</p>
+        <fieldset class="form-group">
+            
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="Sezar" checked>
+                Sezar
+              </label>
+            </div>
+    
+            <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="Pompei">
+                Pompei
+              </label>
+            </div>
+
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="Karasızım">
+                    Karasızım
+                  </label>
+            </div>
+
+          </fieldset>
+
+          <h1 class="display-6" style="font-size:34px">Soru2</h1>
+        <p class="lead" style="font-size:24px">Dünya tarihindeki önemini seçiniz</p>
+        <div class="form-group">
+            <label for="exampleSelect1" style="font-size:14px">1-10 arasında puan verebilirsiniz</label>
+            <select v-model="cevap.onemPuani" class="form-control" name="tarihonem" id="exampleSelect1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+          <h1 class="display-6" style="font-size:34px">Soru3</h1>
+          <p class="lead" style="font-size:24px">Eklemek istediğiniz yorumlarınızı giriniz:</p>
+          <div class="form-group">
+            <label for="exampleTextarea" style="font-size:14px">Lütfen cevabınızı yazınız:</label>
+            <textarea v-model="cevap.cevapMetni" class="form-control" id="exampleTextarea" rows="3"></textarea>
+        </div>
+            <button type="submit" v-on:click="kaydet"
+                class="btn btn-primary">Kaydet</button>
+        </div><!-- /.jumbotron -->
+        <div class="jumbotron" id="bottomjumbo">
+            <h1 class="display-6">Verilen Cevaplar</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="fifteen">Kullanıcı Adı</th>
+                        <th scope="col" class="fifteen">Haklı Taraf</th>
+                        <th scope="col" class="twenty">Önem Puanı</th>
+                        <th scope="col" class="forty">Yorumlar</th>
+                        <th scope="col" class="ten">Sil?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="cl in cevapList">
+                        <th scope="row">{{cl.kullaniciAdi}}</th>
+                        <td>{{cl.hakliTaraf}}</td>
+                        <td>{{cl.onemPuani}}</td>
+                        <td>{{cl.cevapMetni}}</td>
+                        <td>
+                            <i v-on:click="deleteCevap(cl)" class="fa fa-trash"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!-- /.jumbotron -->
+    </div>
+</div>
+    
+    
+
+    
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            olayList: [],
+            cevap: {},
+            cevapList: [],
+        },
+        methods: {
+            kaydet: function (event) {
+                var ht;
+                for(var i = 0; i < 3; i++){
+                    if(document.getElementsByName('optionsRadios')[i].checked){
+                        ht = document.getElementsByName('optionsRadios')[i].value;
+                        break;
+                    }
+
+                }
+                
+                this.cevap.hakliTaraf = ht;
+                this.cevap.onemPuani = document.getElementsByName('tarihonem')[0].selectedIndex+1;
+                this.cevap.kullaniciAdi = sessionStorage.getItem("username");
+                this.cevap.soruNu = 1;
+
+                axios.post("/api/cevap", this.cevap).then(resp => {
+                    if (resp.data === "OK") {
+                        Swal.fire('Cevabınız Kaydedildi!');
+                        this.cevap = {};
+                    }
+                    this.getAllResults();
+                });
+            },
+            grafikgoster: function (event) {
+                this.fillPieChart();
+                this.fillBarChart();
+            },
+            selectCevap: function (cevap) {
+                this.cevap = cevap;
+            },
+            deleteCevap: function (cevap) {
+                axios.delete("/api/cevap/" + cevap.id).then(resp => {
+                    this.getAllResults();
+                });
+            },
+            getAllResults: function () {
+                axios.get("/api/cevap").then(resp => {
+                    this.cevapList = resp.data;
+                });
+            },
+            getAllOlay: function () {
+                axios.get("/api/olay").then(resp => {
+                    this.olayList = resp.data;
+                });
+            },
+            fillPieChart: function () {
+                var myDataPoints = [];
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    title: {
+                        text: "Hangi Taraf Haklıdır?"
+                    },
+                    data: [{
+                        type: "pie",
+                        startAngle: 240,
+                        yValueFormatString: "##0.00\"%\"",
+                        indexLabel: "{label} {y}",
+                        dataPoints: myDataPoints
+                    }]
+                });
+                var myMap = {};
+                
+                for (var i = 0; i < this.cevapList.length; i++){
+                    if(myMap[this.cevapList[i].hakliTaraf] !== undefined)
+                        myMap[this.cevapList[i].hakliTaraf]++;
+                    else
+                        myMap[this.cevapList[i].hakliTaraf] = 1;
+                }
+                
+                var total = 0;
+                for (var i in myMap){
+                    total += myMap[i];
+                }
+                for (var i in myMap) {
+                    var map = {y: myMap[i]*100/total, label: i}
+                    myDataPoints.push(map);
+                }
+                chart.render();
+
+            },
+            fillBarChart: function () {
+                var myDataPoints = [];
+                var chart = new CanvasJS.Chart("chartContainer2", {
+                    animationEnabled: true,
+                    
+                    title:{
+                        text:"Dünya Tarihindeki Önemi"
+                    },
+                    axisX:{
+                        interval: 1
+                    },
+                    axisY2:{
+                        interlacedColor: "rgba(1,77,101,.2)",
+                        gridColor: "rgba(1,77,101,.1)",
+                        title: "Oy sayısı"
+                    },
+                    data: [{
+                        type: "bar",
+                        name: "companies",
+                        axisYType: "secondary",
+                        color: "#014D65",
+                        dataPoints: myDataPoints
+                    }]
+                });
+
+                var myMap = {};
+                
+                for (var i = 0; i < this.cevapList.length; i++){
+                    if(myMap[this.cevapList[i].onemPuani] !== undefined)
+                        myMap[this.cevapList[i].onemPuani]++;
+                    else
+                        myMap[this.cevapList[i].onemPuani] = 1;
+                }
+
+                for(var i = 1; i < 11; i++){
+                    if(myMap[i] === undefined)
+                        myMap[i] = 0;
+                }
+
+                for (var i in myMap) {
+                    var map = {y: myMap[i], label: i}
+                    myDataPoints.push(map);
+                }
+                chart.render();
+                }
+            },
+
+         mounted() {
+            let basicAuth = sessionStorage.getItem("basicAuth");
+            axios.get("/api/login", {
+                headers: { 'Authorization':  'Basic ' + basicAuth }
+            }).then(resp => {
+                if (!resp.data === "OK") {
+                    window.location.href = "login.html"
+                }
+            }).catch(error=>{
+                window.location.href = "login.html";
+            });
+            this.getAllResults();
+            this.getAllOlay();
+            //this.fillPieChart();
+            //this.fillBarChart();
+            //console.log(sessionStorage.getItem("username"));
+        }
+        
+    })
+</script>
+
+</html>

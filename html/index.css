@@ -1,0 +1,30 @@
+#topjumbo {
+  padding: 10px;
+  background:#eef5a6
+}
+
+#bottomjumbo
+   {
+ background:#d4d5fc;
+   }
+table {
+  width: 100%;
+}
+.ten {
+  width: 10%
+}
+.fifteen {
+  width: 15%
+}
+.twenty {
+  width: 20%;
+}
+.forty {
+  width: 40%;
+}
+.fifty {
+  width: 50%;
+}
+.fortyfive{
+  width: 45%;
+}
